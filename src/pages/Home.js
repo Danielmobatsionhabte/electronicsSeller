@@ -60,6 +60,7 @@ export const Home = () => {
                 key={index}
                 product={product}
                 handleCart={handleCart}
+                loading_ ={'In Stock'}
               />
             ))}
         </section>

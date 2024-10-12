@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./ProductCard.css";
 import Loading from "../assets/images/loading.gif";
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, loading_}) => {
   const { name, image, price } = product;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
-
+const l = useRef(loading_);
+const r = l.current; // needs a page reload to display the updated value of loading_
   return (
     <div className="productCard">
       {loading ? (
@@ -26,6 +27,7 @@ export const ProductCard = ({ product }) => {
         <p>${price}</p>
         <button>Add To Cart</button>
       </div>
+      <p style={{fontSize:13.5}}>{loading_}</p>
     </div>
   );
 };
